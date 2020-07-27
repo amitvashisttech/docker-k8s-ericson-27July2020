@@ -15,3 +15,121 @@
    13  cd 01-Docker/
    14  ls
    15  history > Day1_History.txt
+   16  cd ..
+   17  ls
+   18  git add . ; git commit -m "Day1_History.txt"; git push 
+   19  history 
+   20  ls
+   21  cd 
+   22  ls
+   23  docker version 
+   24  systemctl status docker
+   25  docker images
+   26  docker ps 
+   27  docker ps -a
+   28  docker run ubuntu echo "Welcome to the world of Docker Containers"
+   29  docker run ubuntu echo "Hello From Docker"
+   30  docker images
+   31  docker ps 
+   32  docker ps -a 
+   33  docker run centos/7 top 
+   34  docker run centos top 
+   35  docker run centos echo "Hello"
+   36  docker run -it centos top 
+   37  docker ps -a 
+   38  history 
+   39  docker pull amitvashist7/demo
+   40  docker pull amitvashist7/demo:base
+   41  docker images 
+   42  docker pull amitvashist7
+   43* 
+   44  docker pull amitvashist7/amitvashist7
+   45  /
+   46  docker pull amitvashist7/apache-ex4
+   47  docker login 
+   48  cat /root/.docker/config.json
+   49  docker pull amitvashist7/apache-ex4
+   50  docker images
+   51  docker logout
+   52  docker images
+   53  docker pull amitvashist7/apache-ex4:20200107
+   54  docker login 
+   55  docker pull amitvashist7/apache-ex4:20200107
+   56  docker rmi amitvashist7/apache-ex4:20200107
+   57  docker rmi amitvashist7/apache-ex4:base
+   58  docker images 
+   59  docker rmi amitvashist7/apache-ex4:latest              
+   60  ls
+   61  docker images 
+   62  docker pull  amitvashist7/apache-ex4:20200107
+   63  history 
+   64  docker images 
+   65  docker run -it ubuntu                
+   66  cat /etc/os-release
+   67  uname  -a 
+   68  docker images 
+   69  docker run -it centos                
+   70  docker run -it ubuntu:16.04               
+   71  ls
+   72  docker ps 
+   73  docker ps -a
+   74  ls
+   75  docker run -it busybox 
+   76  docker ps
+   77  docker run -it centos
+   78  docker ps 
+   79  docker ps -l
+   80  docker ps -lq
+   81  docker inspec $(docker ps -lq)
+   82  docker inspect $(docker ps -lq)
+   83  docker ps 
+   84  docker attach 3b91f8f4b0ab        
+   85  docker ps 
+   86  docker run -it centos
+   87  docker ps 
+   88  docker ps -a 
+   89  docker start 3b91f8f4b0ab        
+   90  docker ps 
+   91  docker attach 3b91f8f4b0ab        
+   92  docker ps 
+   93  docker -exec 3b91f8f4b0ab  ls -ltr /amitvashist/docker/hello.txt
+   94  docker exec 3b91f8f4b0ab  ls -ltr /amitvashist/docker/hello.txt
+   95  docker exec 3b91f8f4b0ab cat  /amitvashist/docker/hello.txt
+   96  ls
+   97  cd docker-k8s-ericson-27July2020/
+   98  ls
+   99  cd ..
+  100  ls
+  101  docker attach 3b91f8f4b0ab        
+  102  docker ps 
+  103  docker inspect 3b91f8f4b0ab        
+  104  curl 172.17.0.3
+  105  curl 172.17.0.3/info.html 
+  106  docker attach 3b91f8f4b0ab        
+  107  docker ps 
+  108  docker images 
+  109  docker commit -p -m "My First Httpd Image" 3b91f8f4b0ab centos-8-httpd:v1
+  110  docker images 
+  111  docker ps 
+  112  curl 172.17.0.3/info.html 
+  113  docker images 
+  114  docker run -itd --name centos-apache-test-1 centos-8-httpd:v1
+  115  docker ps 
+  116  docker inspect centos-apache-test-1
+  117  curl 172.17.0.3/info.html 
+  118  curl 172.17.0.4/info.html 
+  119  docker run -itd --name centos-apache-test-1 centos-8-httpd:v1
+  120  docker run -itd --name centos-apache-test-2 centos-8-httpd:v1
+  121  docker run -itd --name centos-apache-test-3 centos-8-httpd:v1
+  122  docker ps 
+  123  curl 172.17.0.4/info.html 
+  124  curl 172.17.0.5/info.html 
+  125  curl 172.17.0.6/info.html 
+  126  curl 172.17.0.7/info.html 
+  127  ls
+  128  cd docker-k8s-ericson-27July2020/
+  129  ls
+  130  cd 01-Docker/
+  131  ls
+  132  history 
+  133  history > Day1_History.txt 
