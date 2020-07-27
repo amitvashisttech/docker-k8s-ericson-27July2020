@@ -229,3 +229,139 @@
   227  cd ..
   228  ls
   229  history > 01-Docker/Day1_History.txt 
+  230  git add . ; git commit -m "Day1_History.txt"; git push 
+  231  ls
+  232  cd /var/lib/docker/
+  233  ls
+  234  cd image/
+  235  ls
+  236  cd overlay2/
+  237  ls
+  238  cd ..
+  239  ls
+  240  cd ..
+  241  ls
+  242  cd containers/
+  243  ls
+  244  docker ps 
+  245  cd 548b49a8e3e6eaeb8a33ae49e47a93d6e1959e0358a567b6a35556397425abbf/
+  246  ls
+  247  cd ..
+  248  ls
+  249  cd ..
+  250  ls
+  251  cd volumes/
+  252  ls
+  253  cd ..
+  254  ls
+  255  cd 
+  256  docker ps -aq
+  257  docker kill $(docker ps -aq)
+  258  docker rm $(docker ps -aq)
+  259  docker ps -a 
+  260  docker ps 
+  261  docker container ls 
+  262  docker container ps
+  263  docker container ps - a
+  264  docker container ps -a
+  265  docker volumes ls 
+  266  docker volume ls 
+  267  docker volume create my-vol
+  268  docker volume ls 
+  269  docker volume inspect my-vol
+  270  ls -ltr /var/lib/docker/volumes/my-vol/_data/
+  271  ls
+  272  docker volume inspect my-vol
+  273  docker images 
+  274  docker run -d --name devtest --mount source=my-vol, target=/var/www/html myapache:demo4
+  275  docker run -d --name devtest --mount source=my-vol,target=/var/www/html myapache:demo4
+  276  docker ps 
+  277  docker inspect 684d5d5845f8        
+  278  curl 172.17.0.2
+  279  curl 172.17.0.2/info.html 
+  280  ls
+  281  docker inspect 684d5d5845f8        
+  282  cd /var/lib/docker/volumes/my-vol/_data
+  283  ls
+  284  curl 172.17.0.2/info.html 
+  285  vim info.html 
+  286  curl 172.17.0.2/info.html 
+  287  docker run -d --name devtest --mount source=my-vol,target=/var/www/html myapache:demo4
+  288  docker run -d --name devtest01 --mount source=my-vol,target=/var/www/html myapache:demo4
+  289  curl 172.17.0.2/info.html 
+  290  curl 172.17.0.3/info.html 
+  291  vim info.html 
+  292  curl 172.17.0.3/info.html 
+  293  curl 172.17.0.2/info.html 
+  294  docker kill $(docker ps -aq)
+  295  docker rm $(docker ps -aq)
+  296  docker volume ls 
+  297  docker ps -a 
+  298  ls
+  299  cat info.html 
+  300  ls
+  301  cd 
+  302  ls
+  303  docker run --name alpha -it -v /var/log/ ubuntu:16.04 
+  304  ls
+  305  docker volume ls 
+  306  docker volume inspect c5ebad4462a5e7f70bfb32819c424560e7bbdb0e0357ddcd272f57ccc202e2c2
+  307  cd /var/lib/docker/volumes/c5ebad4462a5e7f70bfb32819c424560e7bbdb0e0357ddcd272f57ccc202e2c2/_data
+  308  ls
+  309  cat amitvashist7/now 
+  310  cd 
+  311  ls
+  312  docker volume ls 
+  313  docker ps 
+  314  docker run --volume-from alpha --name beta busybox 
+  315  docker run --volume-from alpha busybox 
+  316  docker run --volumes-from alpha busybox 
+  317  docker ps 
+  318  docker run -it  --volumes-from alpha --name beta busybox 
+  319  ls
+  320  docker ps 
+  321  cd /var/lib/docker/volumes/c5ebad4462a5e7f70bfb32819c424560e7bbdb0e0357ddcd272f57ccc202e2c2/_data
+  322  ls
+  323  cat amitvashist7/now 
+  324  cd 
+  325  ls
+  326  cd docker-k8s-ericson-27July2020/
+  327  ls
+  328  cd 01-Docker/
+  329  ls
+  330  pwd
+  331  docker run -it -v /root/docker-k8s-ericson-27July2020/01-Docker:/docker/av --name beta-1 busybox 
+  332  docker run -it -v /root/docker-k8s-ericson-27July2020/01-Docker:/docker/av:ro --name beta-2 busybox 
+  333  docker ps 
+  334  docker volume ls 
+  335  docker inspect ca91bbf586df        
+  336  ls
+  337  cd
+  338  docker run --name datacont -v /var/lib/html -v /var/log/www -v /var/amitvashist7 busybox -itd
+  339  docker run -itd --name datacont -v /var/lib/html -v /var/log/www -v /var/amitvashist7 busybox 
+  340  docker run -itd --name datavolume -v /var/lib/html -v /var/log/www -v /var/amitvashist7 busybox 
+  341  docker ps 
+  342  docker volume ls 
+  343  docker inspect datavolume
+  344  docker ps 
+  345  docker run -it  --volumes-from datavolume --name beta busybox 
+  346  docker run -it  --volumes-from datavolume --name beta-x busybox 
+  347  docker run -itd  --volumes-from datavolume --name beta-x1 busybox 
+  348  docker run -itd  --volumes-from datavolume --name beta-x2 busybox 
+  349  docker run -itd  --volumes-from datavolume --name beta-x3 busybox 
+  350  docker ps 
+  351  docker inspect beta-x3
+  352  ls
+  353  docker kill $(docker ps -aq)
+  354  docker rm $(docker ps -aq)
+  355  docker volume ls 
+  356  docker volume ls -1
+  357  docker volume ls -q
+  358  docker volume rm $(docker volume ls -q)
+  359  docker volume ls
+  360  ls
+  361  cd docker-k8s-ericson-27July2020/
+  362  ls
+  363  cd 01-Docker/
+  364  ls
+  365  history > Day1_History.txt 
