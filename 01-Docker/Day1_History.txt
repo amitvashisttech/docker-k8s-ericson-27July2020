@@ -133,3 +133,99 @@
   131  ls
   132  history 
   133  history > Day1_History.txt 
+  134  cd ..
+  135  ls
+  136  git add . ; git commit -m "Day1_History.txt"; git push 
+  137  ls
+  138  ip addr 
+  139  docker inspect  $(docker ps -ql) 
+  140  ls
+  141  cd 01-Docker/
+  142  ls
+  143  mkdir 01-Dockerfiles
+  144  cd 01-Dockerfiles/
+  145  ls
+  146  mkdir apache
+  147  ls
+  148  cd apache/
+  149  ls
+  150  vim Dockerfile
+  151  ls
+  152  rm 1
+  153  ls
+  154  docker build -t myapache
+  155  docker build -t myapache . 
+  156  ls
+  157  docker images 
+  158  ls
+  159  cd ..
+  160  ls
+  161  cp -rf apache myapache
+  162  ls
+  163  cd apache/
+  164  ls
+  165  docker build -t myapache:v1 . 
+  166  docker images 
+  167  ls
+  168  cd ..
+  169  ls
+  170  cd myapache/
+  171  ls -a 
+  172  ls
+  173  sl
+  174  cd ..
+  175  ls
+  176  cd apache/
+  177  ls
+  178  docker images 
+  179  docker rmi myapache                  myapache                  
+  180  docker images 
+  181  docker rmi myapache:v1
+  182  ls
+  183  docker build -t myapache . 
+  184  ls
+  185  docker images 
+  186  docker run -d myapache                  
+  187  docker ps 
+  188  docker inspect e4bdf7b4e223        
+  189  curl 172.17.0.7
+  190  ls
+  191  vim info.html
+  192  ls
+  193  vim Dockerfile 
+  194  docker build -t myapache . 
+  195  docker images 
+  196  docker ps 
+  197  docker run -d myapache
+  198  docker ps 
+  199  curl 172.17.0.7
+  200  curl 172.17.0.8
+  201  curl 172.17.0.8/info.html 
+  202  vim info.html 
+  203  docker build -t myapache . 
+  204  docker run -d myapache
+  205  curl 172.17.0.9/info.html 
+  206  curl 172.17.0.8/info.html 
+  207  curl 172.17.0.7/info.html 
+  208  docker ps 
+  209  docker images 
+  210  ls
+  211  vim info.html 
+  212  docker build -t myapache:demo3 . 
+  213  vim info.html 
+  214  ls
+  215  docker build -t myapache:demo4 . 
+  216  docker images 
+  217  docker run -d myapache:demo3
+  218  curl 172.17.0.9/info.html 
+  219  curl 172.17.0.10/info.html 
+  220  docker run -d myapache:demo4
+  221  curl 172.17.0.11/info.html 
+  222  ls
+  223  cd ..
+  224  ls
+  225  cd ..
+  226  ls
+  227  cd ..
+  228  ls
+  229  history > 01-Docker/Day1_History.txt 
