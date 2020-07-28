@@ -1,419 +1,82 @@
-    1  apt-get update; sudo apt-get install     apt-transport-https     ca-certificates     curl     gnupg-agent     software-properties-common
-    2  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-    3  sudo add-apt-repository    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-    4     $(lsb_release -cs) \
-    5     stable"
-    6  apt-get update; apt-get install docker-ce docker-ce-cli containerd.io -y 
-    7  docker version 
-    8  history 
-    9  git clone https://github.com/amitvashisttech/docker-k8s-ericson-27July2020.git
-   10  ls
-   11  cd docker-k8s-ericson-27July2020/
+    1  ls
+    2  git add . ; git commit -m "Day1_History.txt"; git push
+    3  ls
+    4  cd 01-Docker/
+    5  ls
+    6  cd 01-Dockerfiles/
+    7  ls
+    8  rm -rf myapache/
+    9  ls
+   10  mkdir pythonweb
+   11  cd pythonweb/
    12  ls
-   13  mkdir Docker
-   14  mv Docker 01-Docker
-   15  cd 01-Docker/
+   13  vim app.py 
+   14  ls
+   15  vim req.txt
    16  ls
-   17  history > Day1_History.txt
-   18  cd ..
-   19  ls
-   20  git add . ; git commit -m "Day1_History.txt"; git push 
-   21  history 
+   17  python2.7 app.py 
+   18  ls
+   19  vim Dockerfile
+   20  docker build -t mypython-webapp:v1 . 
+   21  cd 
    22  ls
-   23  cd 
-   24  ls
-   25  docker version 
-   26  systemctl status docker
-   27  docker images
-   28  docker ps 
-   29  docker ps -a
-   30  docker run ubuntu echo "Welcome to the world of Docker Containers"
-   31  docker run ubuntu echo "Hello From Docker"
-   32  docker images
-   33  docker ps 
-   34  docker ps -a 
-   35  docker run centos/7 top 
-   36  docker run centos top 
-   37  docker run centos echo "Hello"
-   38  docker run -it centos top 
-   39  docker ps -a 
-   40  history 
-   41  docker pull amitvashist7/demo
-   42  docker pull amitvashist7/demo:base
-   43  docker images 
-   44  docker pull amitvashist7
-   45  docker pull amitvashist7/amitvashist7
-   46  /
-   47  docker pull amitvashist7/apache-ex4
-   48  docker login 
-   49  cat /root/.docker/config.json
-   50  docker pull amitvashist7/apache-ex4
+   23  docker images 
+   24  docker run -d mypython-webapp:v1 
+   25  docker ps 
+   26  docker inspect af4ee4e8fa52        
+   27  curl 172.17.0.5
+   28  curl 172.17.0.5:8081
+   29  curl 172.17.0.5:8081/amit
+   30  curl 172.17.0.5:8081/info
+   31  cd - 
+   32  ls
+   33  vim app.py 
+   34  curl 172.17.0.5:8081/amit
+   35  ls
+   36  vim Dockerfile 
+   37  docker build -t mypython-webapp:v2 . 
+   38  docker run -d mypython-webapp:v2
+   39  docker ps 
+   40  curl 172.17.0.6:8081/amit
+   41  curl 172.17.0.6:8081/info
+   42  docker ps -aq
+   43  docker kill $(docker ps -aq)
+   44  ls
+   45  cd 
+   46  docker run -d mypython-webapp:v2
+   47  docker ps 
+   48  docker run -d -p 80:8081 mypython-webapp:v2
+   49  docker ps 
+   50  docker image s
    51  docker images
-   52  docker logout
-   53  docker images
-   54  docker pull amitvashist7/apache-ex4:20200107
-   55  docker login 
-   56  docker pull amitvashist7/apache-ex4:20200107
-   57  docker rmi amitvashist7/apache-ex4:20200107
-   58  docker rmi amitvashist7/apache-ex4:base
-   59  docker images 
-   60  docker rmi amitvashist7/apache-ex4:latest              
+   52  docker run -d -p 80:80 myapache:demo4
+   53  netstat -tulnp 
+   54  iptables -L
+   55  docker run -d -P myapache:demo4
+   56  docker ps 
+   57  ls
+   58  cd docker-k8s-ericson-27July2020/
+   59  ls
+   60  cd 01-Docker/
    61  ls
-   62  docker images 
-   63  docker pull  amitvashist7/apache-ex4:20200107
-   64  history 
-   65  docker images 
-   66  docker run -it ubuntu                
-   67  cat /etc/os-release
-   68  uname  -a 
-   69  docker images 
-   70  docker run -it centos                
-   71  docker run -it ubuntu:16.04               
-   72  ls
+   62  cd 01-Dockerfiles/
+   63  ls
+   64  cd apache/
+   65  ls
+   66  vim Dockerfile 
+   67  docker build -t=myapache:demo5 .
+   68  docker run -d -P myapache:demo5
+   69  docker ps 
+   70  curl localhost:32768
+   71  curl localhost:32768/info.html
+   72  docker run -d -P  mypython-webapp:v2
    73  docker ps 
-   74  docker ps -a
-   75  ls
-   76  docker run -it busybox 
-   77  docker ps
-   78  docker run -it centos
-   79  docker ps 
-   80  docker ps -l
-   81  docker ps -lq
-   82  docker inspec $(docker ps -lq)
-   83  docker inspect $(docker ps -lq)
-   84  docker ps 
-   85  docker attach 3b91f8f4b0ab        
-   86  docker ps 
-   87  docker run -it centos
-   88  docker ps 
-   89  docker ps -a 
-   90  docker start 3b91f8f4b0ab        
-   91  docker ps 
-   92  docker attach 3b91f8f4b0ab        
-   93  docker ps 
-   94  docker -exec 3b91f8f4b0ab  ls -ltr /amitvashist/docker/hello.txt
-   95  docker exec 3b91f8f4b0ab  ls -ltr /amitvashist/docker/hello.txt
-   96  docker exec 3b91f8f4b0ab cat  /amitvashist/docker/hello.txt
-   97  ls
-   98  cd docker-k8s-ericson-27July2020/
-   99  ls
-  100  cd ..
-  101  ls
-  102  docker attach 3b91f8f4b0ab        
-  103  docker ps 
-  104  docker inspect 3b91f8f4b0ab        
-  105  curl 172.17.0.3
-  106  curl 172.17.0.3/info.html 
-  107  docker attach 3b91f8f4b0ab        
-  108  docker ps 
-  109  docker images 
-  110  docker commit -p -m "My First Httpd Image" 3b91f8f4b0ab centos-8-httpd:v1
-  111  docker images 
-  112  docker ps 
-  113  curl 172.17.0.3/info.html 
-  114  docker images 
-  115  docker run -itd --name centos-apache-test-1 centos-8-httpd:v1
-  116  docker ps 
-  117  docker inspect centos-apache-test-1
-  118  curl 172.17.0.3/info.html 
-  119  curl 172.17.0.4/info.html 
-  120  docker run -itd --name centos-apache-test-1 centos-8-httpd:v1
-  121  docker run -itd --name centos-apache-test-2 centos-8-httpd:v1
-  122  docker run -itd --name centos-apache-test-3 centos-8-httpd:v1
-  123  docker ps 
-  124  curl 172.17.0.4/info.html 
-  125  curl 172.17.0.5/info.html 
-  126  curl 172.17.0.6/info.html 
-  127  curl 172.17.0.7/info.html 
-  128  ls
-  129  cd docker-k8s-ericson-27July2020/
-  130  ls
-  131  cd 01-Docker/
-  132  ls
-  133  history 
-  134  history > Day1_History.txt 
-  135  cd ..
-  136  ls
-  137  git add . ; git commit -m "Day1_History.txt"; git push 
-  138  ls
-  139  ip addr 
-  140  docker inspect  $(docker ps -ql) 
-  141  ls
-  142  cd 01-Docker/
-  143  ls
-  144  mkdir 01-Dockerfiles
-  145  cd 01-Dockerfiles/
-  146  ls
-  147  mkdir apache
-  148  ls
-  149  cd apache/
-  150  ls
-  151  vim Dockerfile
-  152  ls
-  153  rm 1
-  154  ls
-  155  docker build -t myapache
-  156  docker build -t myapache . 
-  157  ls
-  158  docker images 
-  159  ls
-  160  cd ..
-  161  ls
-  162  cp -rf apache myapache
-  163  ls
-  164  cd apache/
-  165  ls
-  166  docker build -t myapache:v1 . 
-  167  docker images 
-  168  ls
-  169  cd ..
-  170  ls
-  171  cd myapache/
-  172  ls -a 
-  173  ls
-  174  sl
-  175  cd ..
-  176  ls
-  177  cd apache/
-  178  ls
-  179  docker images 
-  180  docker rmi myapache                  myapache                  
-  181  docker images 
-  182  docker rmi myapache:v1
-  183  ls
-  184  docker build -t myapache . 
-  185  ls
-  186  docker images 
-  187  docker run -d myapache                  
-  188  docker ps 
-  189  docker inspect e4bdf7b4e223        
-  190  curl 172.17.0.7
-  191  ls
-  192  vim info.html
-  193  ls
-  194  vim Dockerfile 
-  195  docker build -t myapache . 
-  196  docker images 
-  197  docker ps 
-  198  docker run -d myapache
-  199  docker ps 
-  200  curl 172.17.0.7
-  201  curl 172.17.0.8
-  202  curl 172.17.0.8/info.html 
-  203  vim info.html 
-  204  docker build -t myapache . 
-  205  docker run -d myapache
-  206  curl 172.17.0.9/info.html 
-  207  curl 172.17.0.8/info.html 
-  208  curl 172.17.0.7/info.html 
-  209  docker ps 
-  210  docker images 
-  211  ls
-  212  vim info.html 
-  213  docker build -t myapache:demo3 . 
-  214  vim info.html 
-  215  ls
-  216  docker build -t myapache:demo4 . 
-  217  docker images 
-  218  docker run -d myapache:demo3
-  219  curl 172.17.0.9/info.html 
-  220  curl 172.17.0.10/info.html 
-  221  docker run -d myapache:demo4
-  222  curl 172.17.0.11/info.html 
-  223  ls
-  224  cd ..
-  225  ls
-  226  cd ..
-  227  ls
-  228  cd ..
-  229  ls
-  230  history > 01-Docker/Day1_History.txt 
-  231  git add . ; git commit -m "Day1_History.txt"; git push 
-  232  ls
-  233  cd /var/lib/docker/
-  234  ls
-  235  cd image/
-  236  ls
-  237  cd overlay2/
-  238  ls
-  239  cd ..
-  240  ls
-  241  cd ..
-  242  ls
-  243  cd containers/
-  244  ls
-  245  docker ps 
-  246  cd 548b49a8e3e6eaeb8a33ae49e47a93d6e1959e0358a567b6a35556397425abbf/
-  247  ls
-  248  cd ..
-  249  ls
-  250  cd ..
-  251  ls
-  252  cd volumes/
-  253  ls
-  254  cd ..
-  255  ls
-  256  cd 
-  257  docker ps -aq
-  258  docker kill $(docker ps -aq)
-  259  docker rm $(docker ps -aq)
-  260  docker ps -a 
-  261  docker ps 
-  262  docker container ls 
-  263  docker container ps
-  264  docker container ps - a
-  265  docker container ps -a
-  266  docker volumes ls 
-  267  docker volume ls 
-  268  docker volume create my-vol
-  269  docker volume ls 
-  270  docker volume inspect my-vol
-  271  ls -ltr /var/lib/docker/volumes/my-vol/_data/
-  272  ls
-  273  docker volume inspect my-vol
-  274  docker images 
-  275  docker run -d --name devtest --mount source=my-vol, target=/var/www/html myapache:demo4
-  276  docker run -d --name devtest --mount source=my-vol,target=/var/www/html myapache:demo4
-  277  docker ps 
-  278  docker inspect 684d5d5845f8        
-  279  curl 172.17.0.2
-  280  curl 172.17.0.2/info.html 
-  281  ls
-  282  docker inspect 684d5d5845f8        
-  283  cd /var/lib/docker/volumes/my-vol/_data
-  284  ls
-  285  curl 172.17.0.2/info.html 
-  286  vim info.html 
-  287  curl 172.17.0.2/info.html 
-  288  docker run -d --name devtest --mount source=my-vol,target=/var/www/html myapache:demo4
-  289  docker run -d --name devtest01 --mount source=my-vol,target=/var/www/html myapache:demo4
-  290  curl 172.17.0.2/info.html 
-  291  curl 172.17.0.3/info.html 
-  292  vim info.html 
-  293  curl 172.17.0.3/info.html 
-  294  curl 172.17.0.2/info.html 
-  295  docker kill $(docker ps -aq)
-  296  docker rm $(docker ps -aq)
-  297  docker volume ls 
-  298  docker ps -a 
-  299  ls
-  300  cat info.html 
-  301  ls
-  302  cd 
-  303  ls
-  304  docker run --name alpha -it -v /var/log/ ubuntu:16.04 
-  305  ls
-  306  docker volume ls 
-  307  docker volume inspect c5ebad4462a5e7f70bfb32819c424560e7bbdb0e0357ddcd272f57ccc202e2c2
-  308  cd /var/lib/docker/volumes/c5ebad4462a5e7f70bfb32819c424560e7bbdb0e0357ddcd272f57ccc202e2c2/_data
-  309  ls
-  310  cat amitvashist7/now 
-  311  cd 
-  312  ls
-  313  docker volume ls 
-  314  docker ps 
-  315  docker run --volume-from alpha --name beta busybox 
-  316  docker run --volume-from alpha busybox 
-  317  docker run --volumes-from alpha busybox 
-  318  docker ps 
-  319  docker run -it  --volumes-from alpha --name beta busybox 
-  320  ls
-  321  docker ps 
-  322  cd /var/lib/docker/volumes/c5ebad4462a5e7f70bfb32819c424560e7bbdb0e0357ddcd272f57ccc202e2c2/_data
-  323  ls
-  324  cat amitvashist7/now 
-  325  cd 
-  326  ls
-  327  cd docker-k8s-ericson-27July2020/
-  328  ls
-  329  cd 01-Docker/
-  330  ls
-  331  pwd
-  332  docker run -it -v /root/docker-k8s-ericson-27July2020/01-Docker:/docker/av --name beta-1 busybox 
-  333  docker run -it -v /root/docker-k8s-ericson-27July2020/01-Docker:/docker/av:ro --name beta-2 busybox 
-  334  docker ps 
-  335  docker volume ls 
-  336  docker inspect ca91bbf586df        
-  337  ls
-  338  cd
-  339  docker run --name datacont -v /var/lib/html -v /var/log/www -v /var/amitvashist7 busybox -itd
-  340  docker run -itd --name datacont -v /var/lib/html -v /var/log/www -v /var/amitvashist7 busybox 
-  341  docker run -itd --name datavolume -v /var/lib/html -v /var/log/www -v /var/amitvashist7 busybox 
-  342  docker ps 
-  343  docker volume ls 
-  344  docker inspect datavolume
-  345  docker ps 
-  346  docker run -it  --volumes-from datavolume --name beta busybox 
-  347  docker run -it  --volumes-from datavolume --name beta-x busybox 
-  348  docker run -itd  --volumes-from datavolume --name beta-x1 busybox 
-  349  docker run -itd  --volumes-from datavolume --name beta-x2 busybox 
-  350  docker run -itd  --volumes-from datavolume --name beta-x3 busybox 
-  351  docker ps 
-  352  docker inspect beta-x3
-  353  ls
-  354  docker kill $(docker ps -aq)
-  355  docker rm $(docker ps -aq)
-  356  docker volume ls 
-  357  docker volume ls -1
-  358  docker volume ls -q
-  359  docker volume rm $(docker volume ls -q)
-  360  docker volume ls
-  361  ls
-  362  cd docker-k8s-ericson-27July2020/
-  363  ls
-  364  cd 01-Docker/
-  365  ls
-  366  history > Day1_History.txt 
-  367  cd ..
-  368  ls
-  369  git add . ; git commit -m "Day1_History.txt"; git push 
-  370  ls
-  371  docker ps 
-  372  docker images 
-  373  docker run -d myapache:demo4 
-  374  ls
-  375  docker ps 
-  376  docker inspect 23e713ffc582        
-  377  curl 172.17.0.2/info.html 
-  378  ip addr 
-  379  docker ps 
-  380  docker exec 23e713ffc582 ip link 
-  381  ip netns 
-  382  ls -ltr /var/run/docker/netns/
-  383  ln -s /var/run/docker/netns /var/run/netns
-  384  ip netns 
-  385  ip netns list 
-  386  ip netns exec 73f8b99e5f31 ip addr 
-  387  ip netns exec 73f8b99e5f31 ip link 
-  388  ip link 
-  389  docker run -d myapache:demo3
-  390  ip netns list 
-  391  ip netns d581956e15ce  ip addr 
-  392  ip netns exec  d581956e15ce  ip addr 
-  393  ip link
-  394  ip netns list 
-  395  ip netns exec d581956e15ce ip addr  
-  396  ip netns exec 73f8b99e5f31  ip addr  
-  397  ip link 
-  398  docker ps 
-  399  docker run -d --name alpha-1 -p 80:80 myapache:demo3
-  400  docker ps 
-  401  curl 172.17.0.2/info.html 
-  402  curl localhost/info.html 
-  403  docker stop alpha-1
-  404  docker ps 
-  405  curl 172.17.0.2/info.html 
-  406  curl localhost/info.html 
-  407  netstat -tulnp 
-  408  docker start alpha-1
-  409  docker ps 
-  410  curl localhost/info.html 
-  411  netstat -tulnp 
-  412  iptables -L 
-  413  history 
-  414  ls
-  415  cd docker-k8s-ericson-27July2020/
-  416  ls
-  417  cd 01-Docker/
-  418  ls
-  419  history > Day2_History.txt
+   74  curl http://34.70.8.122:32769/
+   75  docker ps 
+   76  cd ..
+   77  ls
+   78  cd ..
+   79  ls
+   80  cd ..
+   81  ls
+   82  history >  01-Docker/Day2_History.txt 

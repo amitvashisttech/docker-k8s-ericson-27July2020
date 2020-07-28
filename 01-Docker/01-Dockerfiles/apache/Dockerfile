@@ -13,6 +13,8 @@ RUN apt-get install apache2 -y
 # Introduce Custom web Page
 COPY info.html /var/www/html/info.html
 
+# Port Expose
+EXPOSE 80
 
 # Bring up the Service
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
