@@ -126,3 +126,129 @@
   126  cd 01-Docker/
   127  ls
   128  history > Day2_History.txt 
+  129  ls
+  130  cd ..
+  131  ls
+  132  git add . ; git commit -m "Day2_History.txt"; git push
+  133  ls
+  134  docker run -d --name beta-01 --network none  mypython-webapp:v2
+  135  docker run -d --name beta-02 --network host  mypython-webapp:v2
+  136  ip addr 
+  137  netstat -tulnp 
+  138  docker ps 
+  139  docker exec beta-01 ip link 
+  140  docker exec beta-01 ip addr 
+  141  ls
+  142  docker kill beta-01
+  143  docker kill beta-02
+  144  docker rm beta-02
+  145  docker rm beta-01
+  146  docker run -d --name beta-02 --network host  myapache:demo5 
+  147  docker run -d --name beta-01 --network none  myapache:demo5 
+  148  docker exec beta-01 ip addr 
+  149  docker exec beta-02 ip addr 
+  150  docker network ls 
+  151  docker exec beta-01 ip link
+  152  docker exec beta-01 ip addr 
+  153  docker exec beta-02 ip addr 
+  154  docker ps 
+  155  curl localhost:32774
+  156  curl localhost
+  157  netstat 
+  158  netstat -tulnp 
+  159  docker run -d --name beta-03 --network host  myapache:demo5 
+  160  docker ps 
+  161  netstat -tulnp 
+  162  docker run -d --name beta-04 --network host  myapache:demo3 
+  163  netstat -tulnp 
+  164  curl localhost
+  165  curl localhost/info.html 
+  166  ip route 
+  167  cd 
+  168  ls
+  169* 
+  170  docker run -it --name cpumemlimit --cpu=".5" --memory=512  ubuntu:16.04
+  171  docker run -it --name cpumemlimit --cpus=".5" --memory=512  ubuntu:16.04
+  172  docker run -it --name cpumemlimit-01 --cpus=".5" --memory=512m  ubuntu:16.04
+  173  free -m 
+  174  docker version 
+  175  docker ps 
+  176  cat /proc/cpuinfo 
+  177  docker ps 
+  178  docker attach cpumemlimit-01
+  179  ls
+  180  docker events 
+  181  docker events --help
+  182  docker create --name test apline:latest top 
+  183  docker create --name test-1 ubuntu:16.04 top 
+  184  docker ps 
+  185  docker start test-01
+  186  docker start test-1
+  187  docker ps 
+  188  docker run -itd --name test-2 ubuntu:16.04 top 
+  189  docker ps 
+  190  docker evenst 
+  191  docker events 
+  192  docker events --since '2020-01-05'
+  193  docker events --since '10m'
+  194  docker events --since '2020-07-28T07:04:35' --until '2020-07-28T07:07:07'
+  195  docker events --filter 'event=stop'
+  196  docker events --filter 'container=cpumemlimit-01'
+  197  docker run --name test-5 -d busybox sh -c "while true;do $(echo date); sleep 1;done"
+  198  docker ps 
+  199  docker events --filter 'container=test-5'
+  200  docker events --filter 'container=7bfccdd26495'
+  201  docker events --filter 'container=7bfccdd26495'  --since='10m'
+  202  docker events --filter 'event=stop' --since='60m'
+  203  docker events --filter 'event=start' --since='60m'
+  204  docker events --filter 'type=network' --since='60m'
+  205  docker events --filter 'type=volume' --since='60m'
+  206  docker events --filter 'type=volume' --since='36h'
+  207  docker events --filter 'type=volume' --since='2020-07-27T07:07:06'
+  208  docker events --filter 'type=volume' --since='60m'
+  209  docker run -itd -v /var/log/vol myapache:demo5 
+  210  docker sp 
+  211  docker ps
+  212  docker events --filter 'type=volume' --since='60m'
+  213  docker ps 
+  214  docker logs test-5
+  215  docker logs -f test-5
+  216  docker run --name test-6 -d busybox sh -c "while true;do $(echo date); sleep 10;done"
+  217  docker logs -f test-6
+  218  ls
+  219  docker images 
+  220  docker save myapache:demo5 > myapache.tar
+  221  ls
+  222  tar -tvf myapache.tar 
+  223  ls
+  224  docker images 
+  225  docker save mypython-webapp:v2 > mypython-webapp.tar
+  226  tar -tvf mypython-webapp.tar 
+  227  docker save -o mypython-webapp-v1.tar mypython-webapp:v1 
+  228  ls
+  229  tar -tvf mypython-webapp-v1.tar
+  230  docker kill $(docker ps -aq)
+  231  docker rm $(docker ps -aq)
+  232  ls
+  233  docker images 
+  234  docker image -1  
+  235  docker image -q
+  236  docker images -q
+  237  docker rmi $(docker images -q)
+  238  ls
+  239  docker images 
+  240  docker load < myapache.tar 
+  241  docker images 
+  242  docker run -d -P myapache:demo5 
+  243  docker ps 
+  244  curl localhost:32775
+  245  curl localhost:32775/info.html 
+  246  docker load < mypython-webapp.tar 
+  247  docker load < mypython-webapp-v1.tar
+  248  docker images 
+  249  ls
+  250  cd docker-k8s-ericson-27July2020/
+  251  ls
+  252  cd 01-Docker/
+  253  ls
+  254  history > Day2_History.txt
