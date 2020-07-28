@@ -1,289 +1,123 @@
-    1  ls
-    2  git add . ; git commit -m "Day1_History.txt"; git push
-    3  ls
-    4  cd 01-Docker/
-    5  ls
-    6  cd 01-Dockerfiles/
-    7  ls
-    8  rm -rf myapache/
+    1  git clone https://github.com/amitvashisttech/docker-k8s-ericson-27July2020.git
+    2  ls
+    3  cd docker-k8s-ericson-27July2020/
+    4  ls
+    5  mkdir 02-Kubernetes
+    6  ls
+    7  cd 
+    8  git clone https://github.com/amitvashisttech/docker-k8s-ericsson.git
     9  ls
-   10  mkdir pythonweb
-   11  cd pythonweb/
-   12  ls
-   13  vim app.py 
-   14  ls
-   15  vim req.txt
-   16  ls
-   17  python2.7 app.py 
-   18  ls
-   19  vim Dockerfile
-   20  docker build -t mypython-webapp:v1 . 
-   21  cd 
-   22  ls
-   23  docker images 
-   24  docker run -d mypython-webapp:v1 
-   25  docker ps 
-   26  docker inspect af4ee4e8fa52        
-   27  curl 172.17.0.5
-   28  curl 172.17.0.5:8081
-   29  curl 172.17.0.5:8081/amit
-   30  curl 172.17.0.5:8081/info
-   31  cd - 
-   32  ls
-   33  vim app.py 
-   34  curl 172.17.0.5:8081/amit
-   35  ls
-   36  vim Dockerfile 
-   37  docker build -t mypython-webapp:v2 . 
-   38  docker run -d mypython-webapp:v2
-   39  docker ps 
-   40  curl 172.17.0.6:8081/amit
-   41  curl 172.17.0.6:8081/info
-   42  docker ps -aq
-   43  docker kill $(docker ps -aq)
-   44  ls
-   45  cd 
-   46  docker run -d mypython-webapp:v2
-   47  docker ps 
-   48  docker run -d -p 80:8081 mypython-webapp:v2
-   49  docker ps 
-   50  docker image s
-   51  docker images
-   52  docker run -d -p 80:80 myapache:demo4
-   53  netstat -tulnp 
-   54  iptables -L
-   55  docker run -d -P myapache:demo4
-   56  docker ps 
-   57  ls
-   58  cd docker-k8s-ericson-27July2020/
-   59  ls
-   60  cd 01-Docker/
-   61  ls
-   62  cd 01-Dockerfiles/
-   63  ls
-   64  cd apache/
-   65  ls
-   66  vim Dockerfile 
-   67  docker build -t=myapache:demo5 .
-   68  docker run -d -P myapache:demo5
-   69  docker ps 
-   70  curl localhost:32768
-   71  curl localhost:32768/info.html
-   72  docker run -d -P  mypython-webapp:v2
-   73  docker ps 
-   74  curl http://34.70.8.122:32769/
-   75  docker ps 
-   76  cd ..
-   77  ls
-   78  cd ..
-   79  ls
-   80  cd ..
-   81  ls
-   82  history >  01-Docker/Day2_History.txt 
-   83  git add . ; git commit -m "Day1_History.txt"; git push
-   84  ls
-   85  ip addr 
-   86  ip netns 
-   87  ip addr show docker0
-   88  docker network ls 
-   89  docker network inspect dc24549c343a        
-   90  docker kill $(docker ps -qa)
-   91  docker network inspect dc24549c343a        
-   92  docker run -d --name alpha-01 -P  mypython-webapp:v2
-   93  docker network inspect dc24549c343a        
-   94  docker networkls
-   95  docker network ls
-   96  docker network create my-net
-   97  docker network ls
-   98  docker network inspect my-net
-   99  ip addr 
-  100  docker run -d --name alpha-02 --network my-net -P  mypython-webapp:v2
-  101  docker ps 
-  102  ip addr 
-  103  docker network inspect my-net
-  104  docker ps 
-  105  curl 172.18.0.2:32771
-  106  curl 172.18.0.2:32771/
-  107  curl 172.18.0.2:8081
-  108  curl localhost:32771
+   10  cd - 
+   11  ls
+   12  cd 02-Kubernetes/
+   13  ls
+   14  cp -rf /root/docker-k8s-ericsson/K8s/01-Setup . 
+   15  ls
+   16  cd 01-Setup/
+   17  ls
+   18  rm -rf Vagrantfile etcd.sh 
+   19  ls
+   20  vim install-kubernetes.sh 
+   21  ip addr 
+   22  ./install-kubernetes.sh 
+   23  vim install-kubernetes.sh 
+   24  ./install-kubernetes.sh 
+   25  ls
+   26  vim install-node.sh 
+   27  ls
+   28  cd ..
+   29  ls
+   30  cd ..
+   31  ls
+   32  git add . ; git commit -m "K8s-Setup v1.18.0"; git push 
+   33  cd 
+   34  ls
+   35  kubectl get nodes 
+   36  mkdir -p $HOME/.kube
+   37  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+   38  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+   39  cat .kube/config 
+   40  kubectl get nodes 
+   41  kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
+   42  kubectl create -f https://docs.projectcalico.org/manifests/custom-resources.yaml
+   43  kubectl get nodes 
+   44  kubectl get pods -n kube-system
+   45  watch kubectl get pods -n calico-system
+   46  kubectl get nodes 
+   47  ls
+   48  vim docker-k8s-ericson-27July2020/
+   49  vim docker-k8s-ericson-27July2020/02-Kubernetes/01-Setup/install-kubernetes.sh 
+   50  ls
+   51  cd docker-k8s-erics
+   52  cd docker-k8s-ericson-27July2020/
+   53  ls
+   54  git add . ; git commit -m "K8s-Setup v1.18.0"; git push 
+   55  ls
+   56  kubectl get nodes 
+   57  kubectl get token
+   58  kubectl get secret
+   59  kubectl describe secret default-token-5tw2n
+   60  kubectl get token
+   61  kubectl get nodes 
+   62  kubectl get ns 
+   63  kubectl get pods -n calico-system
+   64  kubectl get nodes 
+   65  kubectl cluster-info
+   66  kubectl version 
+   67  kubectl api-versions
+   68  kubectl api-resouces
+   69  kubectl api-resources
+   70  kubectl get nodes -o yaml
+   71  kubectl get nodes
+   72  ls
+   73  history 
+   74  ls
+   75  cd 
+   76  ls
+   77  kubectl get pods 
+   78  kubectl run nginx --image=nginx --port=80 
+   79  kubectl get pods 
+   80  kubectl describe pods nginx   
+   81  kubectl get pods -o wide 
+   82  kubectl get pods 
+   83  kubectl expose pod nginx   --type=NodePort
+   84  kubectl get svc 
+   85  history 
+   86  kubectl run nginx-1 --image=nginx --port=9090
+   87  kubectl describe pod nginx-1
+   88  history 
+   89  kubectl get pods -o wide 
+   90  kubectl get svc 
+   91  kubectl run helloworld --image=amitvashist7/k8s-tiny-web --port=80 -o yaml --dry-run
+   92  kubectl run helloworld --image=amitvashist7/k8s-tiny-web --port=80 -o yaml --dry-run > helloworld.yaml
+   93  ls
+   94  kubectl get pods 
+   95  vim helloworld.yaml 
+   96  ls
+   97  cd docker-k8s-ericson-27July2020/02-Kubernetes/
+   98  ls
+   99  mkdir 02-First-App
+  100  ls
+  101  cp -rf ../../helloworld.yaml . 
+  102  ls
+  103  mv helloworld.yaml 02-First-App/
+  104  ls
+  105  kubectl create -f 02-First-App/helloworld.yaml 
+  106  kubectl get pods 
+  107  kubectl describe helloworld   
+  108  kubectl describe pod helloworld   
   109  ls
-  110  docker network inspect my-net
-  111  docker network create --help
-  112  docker network create --driver=bridge --subnet=172.28.0.0/16 --ip-range=172.28.5.0/24 --gateway=172.28.5.254 myownbr0
-  113  docker network ls 
-  114  docker network inspect myownbr0            
-  115  docker run -d --name alpha-03 --network myownbr0 -P  mypython-webapp:v2
-  116  docker network inspect myownbr0            
-  117  docker run -d --name alpha-04 --network myownbr0 -P  mypython-webapp:v2
-  118  docker run -d --name alpha-05 --network myownbr0 -P  mypython-webapp:v2
-  119  docker network inspect myownbr0            
-  120  curl 172.28.5.2:8081
-  121  curl 172.28.5.1:8081
-  122  curl 172.28.5.0:8081
-  123  ls
-  124  history 
-  125  ls
-  126  cd 01-Docker/
-  127  ls
-  128  history > Day2_History.txt 
-  129  ls
-  130  cd ..
-  131  ls
-  132  git add . ; git commit -m "Day2_History.txt"; git push
-  133  ls
-  134  docker run -d --name beta-01 --network none  mypython-webapp:v2
-  135  docker run -d --name beta-02 --network host  mypython-webapp:v2
-  136  ip addr 
-  137  netstat -tulnp 
-  138  docker ps 
-  139  docker exec beta-01 ip link 
-  140  docker exec beta-01 ip addr 
-  141  ls
-  142  docker kill beta-01
-  143  docker kill beta-02
-  144  docker rm beta-02
-  145  docker rm beta-01
-  146  docker run -d --name beta-02 --network host  myapache:demo5 
-  147  docker run -d --name beta-01 --network none  myapache:demo5 
-  148  docker exec beta-01 ip addr 
-  149  docker exec beta-02 ip addr 
-  150  docker network ls 
-  151  docker exec beta-01 ip link
-  152  docker exec beta-01 ip addr 
-  153  docker exec beta-02 ip addr 
-  154  docker ps 
-  155  curl localhost:32774
-  156  curl localhost
-  157  netstat 
-  158  netstat -tulnp 
-  159  docker run -d --name beta-03 --network host  myapache:demo5 
-  160  docker ps 
-  161  netstat -tulnp 
-  162  docker run -d --name beta-04 --network host  myapache:demo3 
-  163  netstat -tulnp 
-  164  curl localhost
-  165  curl localhost/info.html 
-  166  ip route 
-  167  cd 
-  168  ls
-  169* 
-  170  docker run -it --name cpumemlimit --cpu=".5" --memory=512  ubuntu:16.04
-  171  docker run -it --name cpumemlimit --cpus=".5" --memory=512  ubuntu:16.04
-  172  docker run -it --name cpumemlimit-01 --cpus=".5" --memory=512m  ubuntu:16.04
-  173  free -m 
-  174  docker version 
-  175  docker ps 
-  176  cat /proc/cpuinfo 
-  177  docker ps 
-  178  docker attach cpumemlimit-01
-  179  ls
-  180  docker events 
-  181  docker events --help
-  182  docker create --name test apline:latest top 
-  183  docker create --name test-1 ubuntu:16.04 top 
-  184  docker ps 
-  185  docker start test-01
-  186  docker start test-1
-  187  docker ps 
-  188  docker run -itd --name test-2 ubuntu:16.04 top 
-  189  docker ps 
-  190  docker evenst 
-  191  docker events 
-  192  docker events --since '2020-01-05'
-  193  docker events --since '10m'
-  194  docker events --since '2020-07-28T07:04:35' --until '2020-07-28T07:07:07'
-  195  docker events --filter 'event=stop'
-  196  docker events --filter 'container=cpumemlimit-01'
-  197  docker run --name test-5 -d busybox sh -c "while true;do $(echo date); sleep 1;done"
-  198  docker ps 
-  199  docker events --filter 'container=test-5'
-  200  docker events --filter 'container=7bfccdd26495'
-  201  docker events --filter 'container=7bfccdd26495'  --since='10m'
-  202  docker events --filter 'event=stop' --since='60m'
-  203  docker events --filter 'event=start' --since='60m'
-  204  docker events --filter 'type=network' --since='60m'
-  205  docker events --filter 'type=volume' --since='60m'
-  206  docker events --filter 'type=volume' --since='36h'
-  207  docker events --filter 'type=volume' --since='2020-07-27T07:07:06'
-  208  docker events --filter 'type=volume' --since='60m'
-  209  docker run -itd -v /var/log/vol myapache:demo5 
-  210  docker sp 
-  211  docker ps
-  212  docker events --filter 'type=volume' --since='60m'
-  213  docker ps 
-  214  docker logs test-5
-  215  docker logs -f test-5
-  216  docker run --name test-6 -d busybox sh -c "while true;do $(echo date); sleep 10;done"
-  217  docker logs -f test-6
-  218  ls
-  219  docker images 
-  220  docker save myapache:demo5 > myapache.tar
-  221  ls
-  222  tar -tvf myapache.tar 
-  223  ls
-  224  docker images 
-  225  docker save mypython-webapp:v2 > mypython-webapp.tar
-  226  tar -tvf mypython-webapp.tar 
-  227  docker save -o mypython-webapp-v1.tar mypython-webapp:v1 
-  228  ls
-  229  tar -tvf mypython-webapp-v1.tar
-  230  docker kill $(docker ps -aq)
-  231  docker rm $(docker ps -aq)
-  232  ls
-  233  docker images 
-  234  docker image -1  
-  235  docker image -q
-  236  docker images -q
-  237  docker rmi $(docker images -q)
-  238  ls
-  239  docker images 
-  240  docker load < myapache.tar 
-  241  docker images 
-  242  docker run -d -P myapache:demo5 
-  243  docker ps 
-  244  curl localhost:32775
-  245  curl localhost:32775/info.html 
-  246  docker load < mypython-webapp.tar 
-  247  docker load < mypython-webapp-v1.tar
-  248  docker images 
-  249  ls
-  250  cd docker-k8s-ericson-27July2020/
-  251  ls
-  252  cd 01-Docker/
-  253  ls
-  254  history > Day2_History.txt
-  255  cd ..
-  256  ls
-  257  git add . ; git commit -m "Day2_History.txt"; git push
-  258  docker images 
-  259  docker history myapache:demo5 
-  260  docker inspect myapache:demo5 
-  261  cd
-  262  docker history myapache:demo5 
-  263  docker inspect  myapache:demo5 
-  264  lls
-  265  ls
-  266  cd docker-k8s-ericson-27July2020/
-  267  ls
-  268  cd 01-Docker/
-  269  ls
-  270  cd 01-Dockerfiles/
-  271  ls
-  272  cd apache/
-  273  ls
-  274  vim Dockerfile 
-  275  docker build -t=myapache:demo6 .
-  276  docker history myapache:demo6 
-  277  docker inspect myapache:demo6 
-  278  docker run -d -P myapache:demo6 
-  279  docker ps 
-  280  ls
-  281  cd ..
-  282  ls
-  283  cd ..
-  284  ls
-  285  cd ..
-  286  ls
-  287  cd 01-Docker/
-  288  ls
-  289  history > Day2_History.txt 
+  110  kubectl get pods 
+  111  kubectl expose pod helloworld --type=NodePort -o yaml --dry-run 
+  112  kubectl expose pod helloworld --type=NodePort -o yaml --dry-run > 02-First-App/helloworld-Service.yaml 
+  113  kubectl get svc 
+  114  kubectl create -f 02-First-App/helloworld-Service.yaml 
+  115  kubectl get svc 
+  116  kubectl get pods -o wide
+  117  cat 01-Setup/install-kubernetes.sh 
+  118  ls
+  119  cd ..
+  120  ls
+  121  cd 01-Docker/
+  122  ls
+  123  history > Day2_History.txt 

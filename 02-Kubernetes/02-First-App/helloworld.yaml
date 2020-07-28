@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: helloworld
+  name: helloworld
+spec:
+  containers:
+  - image: amitvashist7/k8s-tiny-web
+    name: helloworld
+    ports:
+    - containerPort: 80
