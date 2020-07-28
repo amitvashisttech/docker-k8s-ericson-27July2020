@@ -80,3 +80,49 @@
    80  cd ..
    81  ls
    82  history >  01-Docker/Day2_History.txt 
+   83  git add . ; git commit -m "Day1_History.txt"; git push
+   84  ls
+   85  ip addr 
+   86  ip netns 
+   87  ip addr show docker0
+   88  docker network ls 
+   89  docker network inspect dc24549c343a        
+   90  docker kill $(docker ps -qa)
+   91  docker network inspect dc24549c343a        
+   92  docker run -d --name alpha-01 -P  mypython-webapp:v2
+   93  docker network inspect dc24549c343a        
+   94  docker networkls
+   95  docker network ls
+   96  docker network create my-net
+   97  docker network ls
+   98  docker network inspect my-net
+   99  ip addr 
+  100  docker run -d --name alpha-02 --network my-net -P  mypython-webapp:v2
+  101  docker ps 
+  102  ip addr 
+  103  docker network inspect my-net
+  104  docker ps 
+  105  curl 172.18.0.2:32771
+  106  curl 172.18.0.2:32771/
+  107  curl 172.18.0.2:8081
+  108  curl localhost:32771
+  109  ls
+  110  docker network inspect my-net
+  111  docker network create --help
+  112  docker network create --driver=bridge --subnet=172.28.0.0/16 --ip-range=172.28.5.0/24 --gateway=172.28.5.254 myownbr0
+  113  docker network ls 
+  114  docker network inspect myownbr0            
+  115  docker run -d --name alpha-03 --network myownbr0 -P  mypython-webapp:v2
+  116  docker network inspect myownbr0            
+  117  docker run -d --name alpha-04 --network myownbr0 -P  mypython-webapp:v2
+  118  docker run -d --name alpha-05 --network myownbr0 -P  mypython-webapp:v2
+  119  docker network inspect myownbr0            
+  120  curl 172.28.5.2:8081
+  121  curl 172.28.5.1:8081
+  122  curl 172.28.5.0:8081
+  123  ls
+  124  history 
+  125  ls
+  126  cd 01-Docker/
+  127  ls
+  128  history > Day2_History.txt 
