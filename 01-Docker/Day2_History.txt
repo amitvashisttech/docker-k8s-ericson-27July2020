@@ -252,3 +252,38 @@
   252  cd 01-Docker/
   253  ls
   254  history > Day2_History.txt
+  255  cd ..
+  256  ls
+  257  git add . ; git commit -m "Day2_History.txt"; git push
+  258  docker images 
+  259  docker history myapache:demo5 
+  260  docker inspect myapache:demo5 
+  261  cd
+  262  docker history myapache:demo5 
+  263  docker inspect  myapache:demo5 
+  264  lls
+  265  ls
+  266  cd docker-k8s-ericson-27July2020/
+  267  ls
+  268  cd 01-Docker/
+  269  ls
+  270  cd 01-Dockerfiles/
+  271  ls
+  272  cd apache/
+  273  ls
+  274  vim Dockerfile 
+  275  docker build -t=myapache:demo6 .
+  276  docker history myapache:demo6 
+  277  docker inspect myapache:demo6 
+  278  docker run -d -P myapache:demo6 
+  279  docker ps 
+  280  ls
+  281  cd ..
+  282  ls
+  283  cd ..
+  284  ls
+  285  cd ..
+  286  ls
+  287  cd 01-Docker/
+  288  ls
+  289  history > Day2_History.txt 

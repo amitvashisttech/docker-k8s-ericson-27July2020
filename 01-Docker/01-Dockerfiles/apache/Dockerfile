@@ -15,6 +15,8 @@ COPY info.html /var/www/html/info.html
 
 # Port Expose
 EXPOSE 80
+EXPOSE 3306
+EXPOSE 8091
 
 # Bring up the Service
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
