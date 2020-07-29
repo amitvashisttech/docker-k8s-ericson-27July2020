@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: hello-healthcheck-http
+  name: hello-healthcheck-http
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hello-healthcheck-http
+  template:
+    metadata:
+      labels:
+        app: hello-healthcheck-http
+    spec:
+      containers:
+      - image: amitvashist7/k8s-tiny-web
+        name: k8s-tiny-web
+        ports:
+        - name: web-port
+          containerPort: 80
+        livenessProbe:
+          httpGet:
+            path: /
+            port: web-port
+          initialDelaySeconds: 15
+          timeoutSeconds: 30       

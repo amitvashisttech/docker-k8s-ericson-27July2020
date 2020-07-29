@@ -439,3 +439,67 @@
   439  cd ..
   440  ls
   441  history > 00-History/Day3_History.txt 
+  442  git add . ; git commit -m "Label-Seclector"; git push 
+  443  kubectl get pods --show-labels
+  444  kubectl get nodes --show-labels
+  445  kubectl get nodes -l env=uat
+  446  ls
+  447  cd 02-Kubernetes/06-Label-Selector/
+  448  ls
+  449  vim helloworld-label.yaml 
+  450  ls
+  451  cd 
+  452  ls
+  453  cd docker-k8s-ericsson/
+  454  ls
+  455  cd K8s/
+  456  ls
+  457  cp -rf 05-Wordpress ../../docker-k8s-ericson-27July2020/02-Kubernetes/07-Wordpress
+  458  cd ../../docker-k8s-ericson-27July2020/02-Kubernetes/07-Wordpress
+  459  ls
+  460  cd ..
+  461  ls
+  462  mkdir 07-Health-Checks
+  463  mv 07-Wordpress 09-Wordpress
+  464  ls
+  465  cd 07-Health-Checks/
+  466  ls
+  467  cp -rf ../05-Service/helloworld_v18.yml . 
+  468  ls
+  469  mv helloworld_v18.yml helloworld-http.yml 
+  470  ls
+  471  vim helloworld-http.yml 
+  472  ls
+  473  kubectl create -f helloworld-http.yml 
+  474  kubectl get pods 
+  475  kubectl describe pod hello-healthcheck-http-78cd747988-7fp6k
+  476  kubectl get pods 
+  477  kubectl describe pod hello-healthcheck-http-78cd747988-7fp6k
+  478  kubectl get deploy
+  479  kubectl edit deploy 
+  480  kubectl set image deploy helloworld-deployment k8s-tiny-web=amitvashist7/k8s-tiny-web:4 --record ; watch -n .5 kubectl get pods
+  481  watch -n .5 kubectl get pods
+  482  kubectl get pods 
+  483  kubectl describe pod hello-healthcheck-http-7867f4647b-7bsf4
+  484  watch -n .5 kubectl get pods
+  485  kubectl describe pod hello-healthcheck-http-7867f4647b-7bsf4
+  486  watch -n .5 kubectl get pods
+  487  ls
+  488  vi helloworld-exec.yml 
+  489  ls
+  490  kubectl create -f helloworld-exec.yml 
+  491  watch -n .5 kubectl get pods
+  492  kubectl describe pod liveness-exec
+  493  watch -n .5 kubectl get pods
+  494  kubectl edit deploy 
+  495  watch -n .5 kubectl get pods
+  496  kubectl describe pod liveness-exec
+  497  kubectl edit deploy 
+  498  ls
+  499  watch -n .5 kubectl get pods
+  500  ls
+  501  cd ..
+  502  ls
+  503  cd ..
+  504  ls
+  505  history > 00-History/Day3_History.txt 
