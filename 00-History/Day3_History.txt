@@ -503,3 +503,111 @@
   503  cd ..
   504  ls
   505  history > 00-History/Day3_History.txt 
+  506  git add . ; git commit -m "07-Health-Checks"; git push 
+  507  ls
+  508  cd 02-Kubernetes/
+  509  ls
+  510  mkdir 08-Secrets
+  511  ls
+  512  cd 08-Secrets/
+  513  ls
+  514  vim helloworld-secrets.yml
+  515  ls
+  516  cp -rf ../07-Health-Checks/helloworld-http.yml . 
+  517  ls
+  518  mv helloworld-http.yml helloworld-secrets-volumes.yml
+  519  vim helloworld-secrets-volumes.yml 
+  520  ls
+  521  echo "root" | base64
+  522  ls
+  523  cat helloworld-secrets.yml 
+  524  echo "root" | base64
+  525  echo "password@432!" | base64
+  526  sed -i "s/UGFzc3dvcmRAMTIzNCE=/cGFzc3dvcmRANDMyIQo=/g" helloworld-secrets.yml 
+  527  sed -i "s/YW1pdHZhc2hpc3Q3/cm9vdAo=/g" helloworld-secrets.yml 
+  528  cat helloworld-secrets.yml 
+  529  kubectl get secret
+  530  kubectl get pods 
+  531  kubectl describe pods hello-healthcheck-http-78cd747988-7wcp9
+  532  ls
+  533  kubectl create -f helloworld-secrets.yml 
+  534  kubectl get secret
+  535  kubectl describe secret db-secrets
+  536  ls
+  537  vim helloworld-secrets-volumes.yml 
+  538  kubectl create -f helloworld-secrets-volumes.yml 
+  539  kubectl get pods 
+  540  kubectl describe pod webapp-64c5cd4d79-4blf4
+  541  kubectl exec -it webapp-64c5cd4d79-4blf4 -- /bin/sh
+  542  exit
+  543  ls
+  544  cat .kube/config 
+  545  kubectl get sa
+  546  kubectl get clusterroles 
+  547  kubectl describe clusterrole system:persistent-volume-provisioner
+  548  ls
+  549  docker-k8s-ericson-27July2020/
+  550  ls
+  551  cd docker-k8s-ericson-27July2020/
+  552  ls
+  553  cd 02-Kubernetes/
+  554  ls
+  555  cd 09-Wordpress/
+  556  ls
+  557  cat wordpress-secrets.yml 
+  558  ls
+  559  cat wordpress-service.yml 
+  560  ls
+  561  vim wordpress-single-deployment-no-volumes.yml
+  562  s
+  563  cd ..
+  564  ls
+  565  kubectl create -f 09-Wordpress/
+  566  vim 09-Wordpress/wordpress-single-deployment-no-volumes.yml 
+  567  kubectl create -f 09-Wordpress/wordpress-single-deployment-no-volumes.yml 
+  568  ls
+  569  cat 04-Deployment/helloworld_v18.yml 
+  570  vim 09-Wordpress/wordpress-single-deployment-no-volumes.yml 
+  571  cat 04-Deployment/helloworld_v18.yml 
+  572  vim 09-Wordpress/wordpress-single-deployment-no-volumes.yml 
+  573  kubectl create -f 09-Wordpress 
+  574  ls
+  575  cd 07-Health-Checks/
+  576  ls
+  577  cat helloworld-http.yml 
+  578  ls
+  579  cd ..
+  580  ls
+  581  vim 09-Wordpress/wordpress-single-deployment-no-volumes.yml 
+  582  kubectl create -f 09-Wordpress/
+  583  kubectl get deploy,pod,secrets,svc 
+  584  ls
+  585  kubectl get deploy 
+  586  kubectl delete deploy hello-healthcheck-http webapp                   
+  587  kubectl get deploy 
+  588  kubectl get svc 
+  589  ls
+  590  kubectl get pods 
+  591  kubectl describe pod wordpress-7d4896594c-6drtq
+  592  kubectl get svc 
+  593  kubectl get pods -o wide 
+  594  kubectl describe pod wordpress-7d4896594c-6drtq
+  595  kubectl exec -it wordpress-7d4896594c-6drtq -c mysql -- mysql -u root -p 
+  596* h
+  597  kubectl exec -it wordpress-7d4896594c-6drtq -c mysql -- mysql -u root -p 
+  598  ls
+  599  cd 09-Wordpress/
+  600  ls
+  601  cat wordpress-secrets.yml 
+  602  echo "cGFzc3dvcmQ="| base64 --decord
+  603  echo "cGFzc3dvcmQ="| base64 --decode
+  604  kubectl exec -it wordpress-7d4896594c-6drtq -c mysql -- mysql -u root -p 
+  605  ls
+  606  cd ..
+  607  ls
+  608  kubectl delete -f 09-Wordpress/
+  609  ;s
+  610  ls
+  611  cd ..
+  612  ls
+  613  history > 00-History/Day3_History.txt 
