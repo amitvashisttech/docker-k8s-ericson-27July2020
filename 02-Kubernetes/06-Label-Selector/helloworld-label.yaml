@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: helloworld-deploy-2
+  name: helloworld-deploy-2
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: helloworld-deploy-2
+  template:
+    metadata:
+      labels:
+        app: helloworld-deploy-2
+    spec:
+      containers:
+      - image: amitvashist7/k8s-tiny-web:2
+        name: k8s-tiny-web
+        ports:
+        - name: web-port
+          containerPort: 80
+      nodeSelector:
+        env: uat

@@ -356,3 +356,86 @@
   356  cd ..
   357  ls
   358  history  > 00-History/Day3_History.txt 
+  359  git add . ; git commit -m "Deployment"; git push 
+  360  git add . ; git commit -m "Service"; git push 
+  361  ls
+  362  cd ..
+  363  ls
+  364  cd docker-k8s-ericsson/
+  365  ls
+  366  cd K8s/
+  367  ls
+  368  cd ..
+  369  ls
+  370  cd docker-k8s-ericson-27July2020/
+  371  ls
+  372  cd 02-Kubernetes/
+  373  ls
+  374  mkdir 05-Service 06-Label-Selector
+  375  cp -rf  05-Service 06-Label-Selector
+  376  ls
+  377  kubectl get nodes 
+  378  kubectl get nodes --show-labels
+  379  kubectl get deploy
+  380  ls
+  381  cd 06-Label-Selector/
+  382  ls
+  383  mv 05-Service/* .
+  384  ls
+  385  rm -rf 05-Service/
+  386  ls
+  387  rm -rf helloworld-service.yaml 
+  388  ls
+  389  mv helloworld_v18.yml helloworld-nolabel.yaml
+  390  ls
+  391  vim helloworld-nolabel.yaml 
+  392  kubectl create -f helloworld-nolabel.yaml 
+  393  kubectl get pods -o wide 
+  394  kubectl label node k8s-worker2 env=uat
+  395  kubectl label node k8s-worker1 env=prod
+  396  ls
+  397  kubectl get nodes --show-labels
+  398  ls
+  399  cp -rf helloworld-nolabel.yaml helloworld-label.yaml 
+  400  vim helloworld-label.yaml 
+  401  kubectl create -f helloworld-label.yaml 
+  402  kubectl get deploy 
+  403  kubectl get pods 
+  404  kubectl describe pod helloworld-deploy-2-5b69c75c6b-m76x9
+  405  ls
+  406  vim helloworld-nolabel.yaml 
+  407  vim helloworld-label.yaml 
+  408  kubectl  apply -f helloworld-label.yaml 
+  409  kubectl get pods 
+  410  vim helloworld-label.yaml 
+  411  kubectl get nodes --show-labels
+  412  kubectl get pods 
+  413  kubectl describe pod helloworld-deploy-2-7446d4c68f-2rnf9
+  414  kubectl delete -f helloworld-label.yaml 
+  415  kubectl get pods 
+  416  kubectl apply  -f helloworld-label.yaml 
+  417  kubectl get pods 
+  418  kubectl get pods -o wide 
+  419  ls
+  420  cp -rf helloworld-label.yaml helloworld-label-prod.yaml 
+  421  vim helloworld-label-prod.yaml 
+  422  kubectl create -f helloworld-label-prod.yaml 
+  423  kubectl get pods -o wide 
+  424  kubectl get pods -l env=uat
+  425  kubectl get pods -L env=uat
+  426  kubectl get pods -l uat
+  427  kubectl get pods 
+  428  kubectl get pods --help
+  429  kubectl get pods --help | grep -i label
+  430  kubectl get pods -l env=uat
+  431  kubectl get pods 
+  432  kubectl get pods -o wide 
+  433  ls
+  434  cd ..
+  435  ls
+  436  kubectl delete -f 06-Label-Selector/
+  437  ls
+  438  kubectl get pods 
+  439  cd ..
+  440  ls
+  441  history > 00-History/Day3_History.txt 
