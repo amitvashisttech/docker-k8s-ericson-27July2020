@@ -1,1 +1,1 @@
-# docker-k8s-ericson-27July2020
+# Docker & Kubernetes Introduction
