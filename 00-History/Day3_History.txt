@@ -191,3 +191,98 @@
   191  cd 00-History/
   192  ls
   193  history > Day3_History.txt
+  194  cd ..
+  195  ls
+  196  git add . ; git commit -m "RC"; git push 
+  197  kubectl get pods 
+  198  kubectl get ns 
+  199  kubectl get pods -n kube-system
+  200  kubectl describe pod kube-apiserver-k8s-master -n kube-system
+  201  kubectl logs kube-apiserver-k8s-master -n kube-system
+  202  ls
+  203  cd docker-k8s-ericson-27July2020/02-Kubernetes/
+  204  ls
+  205  cp -rf ../../docker-k8s-ericsson/K8s/04-Deployment .
+  206  ls
+  207  cd 04-Deployment/
+  208  ls
+  209  ls -ltr 
+  210  cat helloworld.yml 
+  211  ls
+  212  rm -rf helloworld* 
+  213  cp -rf ../../../docker-k8s-ericsson/K8s/04-Deployment/helloworld.yml .
+  214  ls
+  215  vim helloworld.yml 
+  216  kubectl create -f helloworld.yml 
+  217  cd 
+  218  kubectl get deployment
+  219  cd - 
+  220  ls
+  221  kubectl create -f helloworld.yml 
+  222  cat helloworld.yml 
+  223  kubectl get api-resources
+  224  kubectl api-resources
+  225  kubectl api-resources | grep -i Deployment
+  226  vim helloworld.yml 
+  227  kubectl create -f helloworld.yml 
+  228  kubectl api-resources
+  229  kubectl api-resource 
+  230  vim helloworld.yml 
+  231  kubectl create -f helloworld.yml 
+  232  ls
+  233  cat helloworld.yml 
+  234  kubectl create deploy helloworld-deployment --image=amitvashist7/k8s-tiny-web -o yaml --dry-run 
+  235  kubectl create deploy helloworld-deployment --image=amitvashist7/k8s-tiny-web -o yaml --dry-run > helloworld_v18.yml 
+  236  ls
+  237  vim helloworld_v18.yml 
+  238  kubectl create -f helloworld_v18.yml 
+  239  cd 
+  240  kubectl get deploy 
+  241  kubectl get pods 
+  242  kubectl get pods --all
+  243  kubectl get pods -all
+  244  kubectl delete pod --all
+  245  kubectl get pods 
+  246  kubectl get deploy,rs
+  247  kubectl scale --replicas=10 deploy helloworld-deployment ; watch -n .5 kubectl get pods 
+  248  kubectl scale --replicas=1 deploy helloworld-deployment ; watch -n .5 kubectl get pods 
+  249  kubectl scale --replicas=3 deploy helloworld-deployment ; watch -n .5 kubectl get pods 
+  250  ls
+  251  kubectl get deploy 
+  252  kubectl expose deploy helloworld-deployment --type=NodePort 
+  253  kubectl expose deploy helloworld-deployment --type=NodePort --port=80
+  254  kubectl get svc 
+  255  kubectl get pods -o wide 
+  256  kubectl rollout status  helloworld-deployment 
+  257  kubectl rollout status  deploy helloworld-deployment 
+  258  kubectl describe deploy helloworld-deployment 
+  259  kubectl set image deploy helloworld-deployment k8s-tiny-web=amitvashist7/k8s-tiny-web:2
+  260  kubectl rollout status  deploy helloworld-deployment 
+  261  kubectl scale --replicas=10 deploy helloworld-deployment ; watch -n .5 kubectl get pods 
+  262  kubectl set image deploy helloworld-deployment k8s-tiny-web=amitvashist7/k8s-tiny-web:3 ; watch -n .5 kubectl get pods
+  263  kubectl get rc 
+  264  kubectl get rs
+  265  kubectl rollout status  deploy helloworld-deployment 
+  266  kubectl rollout history  deploy helloworld-deployment 
+  267  kubectl set image deploy helloworld-deployment k8s-tiny-web=amitvashist7/k8s-tiny-web:4 --record ; watch -n .5 kubectl get pods
+  268  kubectl rollout history  deploy helloworld-deployment 
+  269  kubectl rollout history  deploy helloworld-deployment --revision=1
+  270  kubectl rollout history  deploy helloworld-deployment --revision=2
+  271  kubectl rollout history  deploy helloworld-deployment --revision=3
+  272  kubectl rollout history  deploy helloworld-deployment --revision=4
+  273  kubectl rollout status  deploy helloworld-deployment 
+  274  kubectl rollout undo  deploy helloworld-deployment 
+  275  kubectl rollout history  deploy helloworld-deployment 
+  276  kubectl rollout undo  deploy helloworld-deployment -to-revision=1
+  277  kubectl rollout undo  deploy helloworld-deployment --to-revision=1
+  278  kubectl rollout history  deploy helloworld-deployment 
+  279  ls
+  280  cd - 
+  281  ls
+  282  rm -rf helloworld.yml 
+  283  ls
+  284  cd ..
+  285  ls
+  286  cd ..
+  287  ls
+  288  history > 00-History/Day3_History.txt 
