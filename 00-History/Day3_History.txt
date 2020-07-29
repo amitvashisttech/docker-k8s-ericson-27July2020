@@ -286,3 +286,73 @@
   286  cd ..
   287  ls
   288  history > 00-History/Day3_History.txt 
+  289  git add . ; git commit -m "Deployment"; git push 
+  290  ls
+  291  kubectl delete -f 02-Kubernetes/04-Deployment/helloworld_v18.yml 
+  292  kubectl get svc 
+  293  kubectl describe svc helloworld-deployment
+  294  kubectl delete svc helloworld-deployment
+  295  ls
+  296  cd 02-Kubernetes/
+  297  ls
+  298  cp -rf ../../docker-k8s-ericsson/K8s/05-Wordpress .
+  299  ls
+  300  rm -rf 05-Wordpress/
+  301  mkdir 05-Service
+  302  ls
+  303  cd 05-Service/
+  304  ls
+  305  cp -rf ../04-Deployment/* . 
+  306  ls
+  307  sl
+  308  ls
+  309  vim helloworld_v18.yml 
+  310  ls
+  311  kubectl create -f helloworld_v18.yml --dry-run 
+  312  kubectl create -f helloworld_v18.yml 
+  313  kubectl get deploy 
+  314  kubectl expose deploy helloworld-deployment --type=NodePort -o yaml --dry-run helloworld-service.yaml
+  315  kubectl expose deploy helloworld-deployment --type=NodePort -o yaml --dry-run > helloworld-service.yaml
+  316  ls
+  317  vim helloworld-service.yaml 
+  318  cat helloworld_v18.yml 
+  319  vim helloworld-service.yaml 
+  320  ls
+  321  kubectl create -f helloworld-service.yaml --dry-run 
+  322  kubectl create -f helloworld-service.yaml
+  323  kubectl get svc 
+  324  kubectl describe svc helloworld-deployment
+  325  kubectl get pod --show-lables
+  326  kubectl get pod --show-lable
+  327  kubectl get pod --show-label
+  328  kubectl get pods --show-labels
+  329  kubectl describe svc helloworld-deployment
+  330  kubectl get pods --show-labels
+  331  kubectl get pods -o wide 
+  332  kubectl describe svc helloworld-deployment
+  333  kubectl scale --replicas=1 deploy helloworld-deployment
+  334  kubectl describe svc helloworld-deployment
+  335  kubectl scale --replicas=5 deploy helloworld-deployment
+  336  kubectl describe svc helloworld-deployment
+  337  vim helloworld_v18.yml 
+  338  kubectl apply -f helloworld_v18.yml 
+  339  kubectl get deplot 
+  340  kubectl get deploy 
+  341  kubectl edit deploy helloworld-deployment
+  342  kubectl get deploy 
+  343  kubectl get pods 
+  344  kubectl describe svc helloworld-deployment
+  345  ls
+  346  kubectl get rs 
+  347  kubectl edit deploy helloworld-deployment
+  348  kubectl get rs 
+  349  kubectl describe svc helloworld-deployment
+  350  ls
+  351  cd ..
+  352  ls
+  353  kubectl delete -f 05-Service/
+  354  kubectl get svc,deploy 
+  355  ls
+  356  cd ..
+  357  ls
+  358  history  > 00-History/Day3_History.txt 
